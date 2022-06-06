@@ -10,7 +10,6 @@ public class FestivalController {
 
     public FestivalController() {
 
-
     }
 
 
