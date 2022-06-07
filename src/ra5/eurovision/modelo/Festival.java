@@ -31,7 +31,7 @@ public class Festival {
      * Constructor de la clase FestivalEurovision
      */
     public Festival() {
-        festival=new HashMap<>();
+        festival=new TreeMap<>();
     }
 
     /**
@@ -41,13 +41,12 @@ public class Festival {
      * si existe el país se añaden los puntos
      */
     public void addPuntos(String pais, int puntos) {
-        for (String s : festival.keySet()) {
-            if (s.equals(pais)){
-                festival.put(s,puntos);
-            }
-            else{
-                festival.put(pais,puntos);
-            }
+        pais=pais.toUpperCase();
+        if(!festival.containsKey(pais)){
+            festival.put(pais,puntos);
+        }else {
+            int pun=festival.get(pais)+puntos;
+            festival.put(pais,pun);
         }
     }
 
