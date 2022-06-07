@@ -92,7 +92,7 @@ public class Festival {
      */
     private void tratarLinea(String linea) throws NumberFormatException, IllegalArgumentException {
         String[] parse = linea.split(":");
-        for (int i = 0; i < parse.length; i+=2) {
+        for (int i = 0; i < parse.length-1; i+=2) {
             addPuntos(parse[i],Integer.parseInt(parse[i+1]));
         }
     }
@@ -105,16 +105,14 @@ public class Festival {
      * Se propagan las posibles excepciones
      */
     public int puntuacionDe(String pais) throws PaisExcepcion {
+        pais=pais.toUpperCase();
         int puntuacion=0;
         boolean existe=false;
-        for (String s : festival.keySet()) {
-            if (s.equals(pais)){
-                existe=true;
-                puntuacion=festival.get(s);
-            }
+        if (festival.containsKey(pais)){
+            puntuacion=festival.get(pais);
         }
-        if (!existe){
-            throw new PaisExcepcion("Pais " + pais + " no existe");
+        else {
+            throw new PaisExcepcion("El país " + pais + " no existe");
         }
         return puntuacion;
 
@@ -127,12 +125,13 @@ public class Festival {
     public String ganador() {
         int max=0;
         String pais="";
-        for (Integer puntos : festival.values()) {
+        for (String s : festival.keySet()) {
+            int puntos = festival.get(s);
             if (puntos>max){
                 max=puntos;
+                pais=s;
             }
         }
-        // pais=festival.get(max);
         return pais;
     }
 

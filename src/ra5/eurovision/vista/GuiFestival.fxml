@@ -10,12 +10,13 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane prefHeight="417.0" prefWidth="556.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="417.0" prefWidth="556.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ra5.eurovision.controlador.FestivalController">
    <center>
       <BorderPane prefHeight="366.0" prefWidth="516.0" BorderPane.alignment="CENTER">
          <center>
@@ -33,13 +34,13 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnMostrarPuntos" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Mostrar puntos de país" GridPane.columnIndex="2">
+                  <Button fx:id="btnMostrarPuntos" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#mostrarPuntos" stylesheets="@../../../../resources/application.css" text="Mostrar puntos de país" GridPane.columnIndex="2">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Button>
                   <TextField fx:id="txtField" GridPane.columnIndex="1" />
-                  <Button fx:id="btnMostrarGanador" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Mostrar ganador" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="btnMostrarGanador" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#mostrarGanador" stylesheets="@../../../../resources/application.css" text="Mostrar ganador" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin></Button>
@@ -48,7 +49,7 @@
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </CheckBox>
-                  <Label alignment="CENTER_RIGHT" text="País: " GridPane.halignment="RIGHT" />
+                  <Label alignment="CENTER_RIGHT" stylesheets="@../../../../resources/application.css" text="País: " GridPane.halignment="RIGHT" />
                </children>
             </GridPane>
          </top></BorderPane>
@@ -57,7 +58,7 @@
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
    <bottom>
-      <Button mnemonicParsing="false" onAction="#clear" text="Clear" BorderPane.alignment="CENTER_RIGHT">
+      <Button mnemonicParsing="false" onAction="#clear" stylesheets="@../../../../resources/application.css" text="Clear" BorderPane.alignment="CENTER_RIGHT">
          <BorderPane.margin>
             <Insets right="10.0" top="5.0" />
          </BorderPane.margin>
@@ -71,9 +72,15 @@
         <menus>
           <Menu mnemonicParsing="false" text="Fichero">
             <items>
-              <MenuItem mnemonicParsing="false" text="Leer votaciones" />
+              <MenuItem mnemonicParsing="false" onAction="#leerVotaciones" text="Leer votaciones">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" onAction="#salir" text="Salir" />
+                  <MenuItem mnemonicParsing="false" onAction="#salir" text="Salir">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
             </items>
           </Menu>
         </menus>
