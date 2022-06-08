@@ -55,11 +55,11 @@ public class FestivalController {
                 String pais = txtField.getText().toUpperCase().trim();
                 try {
                     if (checkGuardar.isSelected()){
-                        areaTxt.setText("Pais: " + pais + " Puntos: " + festival.puntuacionDe(pais) + "\n" + "GUARDADO EN FICHERO");
+                        areaTxt.setText("Pais: " + pais + "\nPuntos: " + festival.puntuacionDe(pais) + "\nGUARDADO EN FICHERO");
                         festival.guardarResultados();
                     }
                     else {
-                        areaTxt.setText("Pais: " + pais + " Puntos: " + festival.puntuacionDe(pais));
+                        areaTxt.setText("Pais: " + pais + "\nPuntos: " + festival.puntuacionDe(pais));
                     }
                 } catch (PaisExcepcion e) {
                     areaTxt.setText("No existe el pais " + pais);
@@ -77,7 +77,7 @@ public class FestivalController {
             areaTxt.setText("Lee el fichero");
         }else {
             if (checkGuardar.isSelected()){
-                areaTxt.setText(festival.ganador() + "\n" + "GUARDADO EN FICHERO");
+                areaTxt.setText("El ganador es: " + festival.ganador() + "\nGUARDADO EN FICHERO");
             }
             else {
                 areaTxt.setText("El ganador es: " + festival.ganador());

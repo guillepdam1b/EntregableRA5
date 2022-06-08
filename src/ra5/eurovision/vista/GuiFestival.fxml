@@ -39,7 +39,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Button>
-                  <TextField fx:id="txtField" GridPane.columnIndex="1" />
+                  <TextField fx:id="txtField" onAction="#mostrarPuntos" GridPane.columnIndex="1" />
                   <Button fx:id="btnMostrarGanador" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#mostrarGanador" stylesheets="@../../../../resources/application.css" text="Mostrar ganador" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets />
