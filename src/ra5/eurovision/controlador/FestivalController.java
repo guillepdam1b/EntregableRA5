@@ -52,17 +52,20 @@ public class FestivalController {
             if (txtField.getText().isBlank()){
                 areaTxt.setText("Teclee país");
             }else {
-                String pais = txtField.getText().trim();
+                String pais = txtField.getText().toUpperCase().trim();
                 try {
                     if (checkGuardar.isSelected()){
-                        areaTxt.setText("Pais: " + pais + "Puntos: " + festival.puntuacionDe(pais) + "\n" + "GUARDADO EN FICHERO");
+                        areaTxt.setText("Pais: " + pais + " Puntos: " + festival.puntuacionDe(pais) + "\n" + "GUARDADO EN FICHERO");
+                        festival.guardarResultados();
                     }
                     else {
-                        areaTxt.setText("Pais: " + pais + "Puntos: " + festival.puntuacionDe(pais));
+                        areaTxt.setText("Pais: " + pais + " Puntos: " + festival.puntuacionDe(pais));
                     }
                 } catch (PaisExcepcion e) {
                     areaTxt.setText("No existe el pais " + pais);
                     cogerFoco();
+                } catch (IOException e) {
+                    areaTxt.setText("No se peuede leer el archivo: " + e.getMessage());
                 }
             }
         }
